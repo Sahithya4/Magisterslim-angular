@@ -1,1 +1,27 @@
-<p>addstudent works!</p>
+<app-teacher></app-teacher>
+<form [formGroup]="studentDetails" (ngSubmit)="createStudent()">
+    <div class="container">
+        <h3>Student Details:</h3>
+        <div>
+            StudentId:
+            <input type="number" formControlName="id">
+        </div>
+        <div>
+            StudentName:
+            <input type="text" formControlName="name">
+        </div>
+        <div>
+            Gender:
+            <input type="text" formControlName="gender">
+        </div>
+        <div>
+            Phone no:
+            <input type="number" formControlName="phoneno">
+        </div>
+        <div>
+            active:
+            <input type="checkbox" formControlName="active">
+        </div>
+        <button type="submit" [disabled]="!studentDetails.valid">submit</button>
+        </div>
+</form>

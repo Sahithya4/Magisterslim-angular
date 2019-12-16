@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 
 
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule} from '@angular/common/http';
 
 
@@ -13,6 +13,10 @@ import { TeacherComponent } from '../typescripts/teacher.component';
 import { StudentComponent } from '../typescripts/student.component';
 import { AppComponent } from '../typescripts/app.component';
 import { AddstudentComponent } from '../typescripts/addstudent.component';
+import { StudyguideComponent } from '../typescripts/studyguide.component';
+import { AssignmentComponent } from '../typescripts/assignment.component';
+import { ResourceComponent } from '../typescripts/resource.component';
+import { ThemeComponent } from '../typescripts/theme.component';
 
 
 @NgModule({
@@ -21,13 +25,18 @@ import { AddstudentComponent } from '../typescripts/addstudent.component';
     LoginComponent,
     TeacherComponent,
     StudentComponent,
-    AddstudentComponent
+    AddstudentComponent,
+    StudyguideComponent,
+    AssignmentComponent,
+    ResourceComponent,
+    ThemeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

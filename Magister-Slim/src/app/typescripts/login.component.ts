@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 
 import { Router } from "@angular/router";
-import { User } from "src/User";
 import { LoginService } from "../services/login.service";
+import { FormBuilder,Validators} from "@angular/forms"
 
 @Component({
   selector: "app-login",
@@ -10,18 +10,21 @@ import { LoginService } from "../services/login.service";
   styleUrls: ["../css/login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(private loginService: LoginService, private router: Router,private formBuilder : FormBuilder) {}
 
   ngOnInit() {}
 
-  saveLogin(loginDetails: User) {
-    console.log(loginDetails);
-    this.loginService.validate(loginDetails).subscribe(data => {
-      console.log(data);
+  loginForm = this.formBuilder.group({
+    username : ['',Validators.required],
+    password : ['',Validators.required]
+  });
+
+  saveLogin() {
+    console.log(this.loginForm.value);
+    this.loginService.validate(this.loginForm.value).subscribe(data => {
       console.log(data.role);
       if (data.role == "teacher") this.router.navigate(["teacher"]);
       else if (data.role == "student") this.router.navigate(["student"]);
     });
-    // this.router.navigate(['login1']);
   }
 }

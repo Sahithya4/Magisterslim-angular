@@ -1,0 +1,9 @@
+<app-studyguide></app-studyguide>
+<div class="container">
+    <ul *ngFor= "let lists of viewLists">
+        <li>
+            <button type="button" (click)="onStudyGuide(lists)">{{lists.themeName}}</button>
+            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myTheme" (click)="onStudyGuide(lists)">Add Units</button>
+        </li>
+    </ul>
+</div>

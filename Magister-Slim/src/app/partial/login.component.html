@@ -1,39 +1,15 @@
-<!-- <body>
-    <h1 align="center">Magister slim</h1>
-    <form #loginDetails="ngForm">
-        <table align="center">
-
-            <tr>
-                <td>Name:</td>
-                <td><input type="text" size=25 name="username" placeholder="Username" id="id" [ngModel]></td>
-            </tr>
-
-            <tr>
-                <td>Password:</td>
-                <td><input type="password" size=25 name="password" placeholder="Password" id="id" [ngModel]></td>
-            </tr>
-
-            <tr>
-                <td><input type="submit" value="Submit" (click)="saveLogin(loginDetails.value)"></td>
-            </tr>
-
-        </table>
-    </form>
-</body> -->
 <router-outlet></router-outlet>
-<body>
-    <!-- Begin Page Content -->
-    <div id="container">
-        <form #loginDetails="ngForm">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" [ngModel]>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" [ngModel]>
-            <div id="lower">
-                <input type="checkbox"><label class="check" for="checkbox">Keep me logged in</label>
-                <input type="submit" value="Login" (click)="saveLogin(loginDetails.value)">
-            </div><!--/ lower-->
-        </form>
-    </div><!--/ container-->
-    <!-- End Page Content -->
-</body>
+<div id="container">
+    <h1>Magister-Slim</h1>
+        <form [formGroup]="loginForm" (ngSubmit)=saveLogin()>
+        <label>
+            Username : <input type="text" id="username" formControlName="username">
+        </label>
+        <label>
+            Password : <input type="password" id="password" formControlName="password">
+        </label>
+        <div id="lower">
+            <input type="submit" value="Login">
+        </div>
+    </form>
+</div>

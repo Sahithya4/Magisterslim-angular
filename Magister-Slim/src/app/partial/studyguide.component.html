@@ -1,0 +1,102 @@
+<app-teacher></app-teacher>
+<div class="container">
+    <ul>
+        <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>StudyGuide Name</th>
+                <th>Offering</th>
+                <th>Offering Level</th>
+                <th>Course</th>
+                <th>Start Date</th>
+                <th>End date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor= "let lists of viewLists">
+                <button type="button" (click)="onStudyGuide(lists)"><td>{{lists.studyGuideName}}</td></button>
+                <td>{{lists.offeringReference.offeringName}}</td>
+                <td>{{lists.offeringLevelReference.offeringLevelName}}</td>
+                <td>{{lists.courseReference.courseName}}</td>
+                <td>{{lists.validOnwards}}</td>
+                <td>{{lists.validUpto}}</td>
+                </tr>
+            </tbody>
+          </table>
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal">Create StudyGuide</button>
+    </ul>
+    <div class="modal" id="myTheme">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+                <form [formGroup]="themeDetails" (ngSubmit)="createTheme()">
+                    <div class="container">
+                        <h3>Theme Details:</h3>
+                        <div>
+                            ThemeId:
+                            <input type="number" formControlName="themeId">
+                        </div>
+                        <div>
+                            ThemeName:
+                            <input type="text" formControlName="themeName">
+                        </div>
+                        <div>
+                            active:
+                            <input type="checkbox" formControlName="active">
+                        </div>
+                        <button type="submit" [disabled]="!themeDetails.valid">submit</button>
+                        </div>
+                </form>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="modal" id="myModal">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                    <form [formGroup]="studyGuideDetails" (ngSubmit)="createStudyGuide()">
+                        <div class="container">
+                            <h3>StudyGuide Details:</h3>
+                            <div>
+                                StudyGuideId:
+                                <input type="number" formControlName="studyGuideId">
+                            </div>
+                            <div>
+                                StudyGuideName:
+                                <input type="text" formControlName="studyGuideName">
+                            </div>
+                            <div formGroupName="courseReference">
+                                Course Name:
+                                <select formControlName="courseName" >
+                                    <option *ngFor="let course of courseDetails">{{course.courseName}}</option>
+                                </select>
+                            </div>
+                            <div>
+                                ValidOnwards:
+                                <input type="date" formControlName="validOnwards">
+                            </div>
+                            <div>
+                                ValidUpto:
+                                <input type="date" formControlName="validUpto">
+                            </div>
+                            <div>
+                                active:
+                                <input type="checkbox" formControlName="active">
+                            </div>
+                            <button type="submit" [disabled]="!studyGuideDetails.valid">submit</button>
+                            </div>
+                    </form>
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>

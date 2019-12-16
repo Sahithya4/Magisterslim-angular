@@ -1,0 +1,46 @@
+<app-teacher></app-teacher>
+<div class="container">
+    <ul *ngFor= "let lists of viewLists">
+        <li>
+            Resource name :    {{lists.resourceName}}
+            Resource Type :    {{lists.resourceType}}
+        </li>
+    </ul>
+    <ul>
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal">Create Resource</button>
+    </ul>
+    <div class="modal" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+                <form [formGroup]="resourceDetails" (ngSubmit)="createResource()">
+                    <div class="container">
+                        <h3>Resource Details:</h3>
+                        <div>
+                            Resource Id:
+                            <input type="number" formControlName="resourceId">
+                        </div>
+                        <div>
+                            Resource Name:
+                            <input type="text" formControlName="resourceName">
+                        </div>
+                        <div>
+                            Resource Type:
+                            <input type="text" formControlName="resourceType">
+                        </div>
+                        <div>
+                            active:
+                            <input type="checkbox" formControlName="active">
+                        </div>
+                        <button type="submit" [disabled]="!resourceDetails.valid">submit</button>
+                        </div>
+                </form>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
