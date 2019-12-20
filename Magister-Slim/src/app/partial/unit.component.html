@@ -1,0 +1,15 @@
+<app-theme></app-theme>
+<ul class="list-group list-group-flush">
+<table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Units</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let list of units" (click)="onUnits(lists)">
+        <td>{{list.unitName}}</td>
+        </tr>
+    </tbody>
+  </table>
+</ul>

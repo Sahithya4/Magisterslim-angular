@@ -13,4 +13,10 @@ export class ThemeService {
   insertData(theme:any,studyGuideId):Observable<any> {
     return this.http.post<any>("http://localhost:8088/studyGuide/"+studyGuideId+"/theme",theme);
   }
+
+  findTheme(themeId,studyGuide){
+    console.log(themeId)
+    console.log(studyGuide)
+    return this.http.get<any>("http://localhost:8088/studyGuide/"+studyGuide.studyGuideId+"/theme/"+themeId);
+  }
 }

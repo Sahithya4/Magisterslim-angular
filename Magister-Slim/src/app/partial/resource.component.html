@@ -1,10 +1,20 @@
 <app-teacher></app-teacher>
 <div class="container">
     <ul *ngFor= "let lists of viewLists">
-        <li>
-            Resource name :    {{lists.resourceName}}
-            Resource Type :    {{lists.resourceType}}
-        </li>
+        <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>Resource name</th>
+                <th>Resource Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor= "let lists of viewLists" (click)="onStudyGuide(lists)">
+                <td>{{lists.resourceName}}</td>
+                <td>{{lists.resourceType}}</td>
+                </tr>
+            </tbody>
+          </table>
     </ul>
     <ul>
         <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal">Create Resource</button>

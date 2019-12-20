@@ -13,8 +13,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor= "let lists of viewLists">
-                <button type="button" (click)="onStudyGuide(lists)"><td>{{lists.studyGuideName}}</td></button>
+              <tr *ngFor= "let lists of viewLists" (click)="onStudyGuide(lists)">
+                <td>{{lists.studyGuideName}}</td>
                 <td>{{lists.offeringReference.offeringName}}</td>
                 <td>{{lists.offeringLevelReference.offeringLevelName}}</td>
                 <td>{{lists.courseReference.courseName}}</td>
@@ -25,36 +25,7 @@
           </table>
         <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal">Create StudyGuide</button>
     </ul>
-    <div class="modal" id="myTheme">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <div class="modal-header">
-                <form [formGroup]="themeDetails" (ngSubmit)="createTheme()">
-                    <div class="container">
-                        <h3>Theme Details:</h3>
-                        <div>
-                            ThemeId:
-                            <input type="number" formControlName="themeId">
-                        </div>
-                        <div>
-                            ThemeName:
-                            <input type="text" formControlName="themeName">
-                        </div>
-                        <div>
-                            active:
-                            <input type="checkbox" formControlName="active">
-                        </div>
-                        <button type="submit" [disabled]="!themeDetails.valid">submit</button>
-                        </div>
-                </form>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>
+   
     <div class="modal" id="myModal">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
@@ -70,6 +41,14 @@
                                 StudyGuideName:
                                 <input type="text" formControlName="studyGuideName">
                             </div>
+                            <div>
+                              Offering:
+                              <input type="text" formControlName="offering">
+                            </div>
+                            <div>
+                              Offering Level:
+                              <input type="text" formControlName="offeringLevel">
+                            </div>
                             <div formGroupName="courseReference">
                                 Course Name:
                                 <select formControlName="courseName" >
@@ -84,16 +63,12 @@
                                 ValidUpto:
                                 <input type="date" formControlName="validUpto">
                             </div>
-                            <div>
-                                active:
-                                <input type="checkbox" formControlName="active">
-                            </div>
-                            <button type="submit" [disabled]="!studyGuideDetails.valid">submit</button>
                             </div>
                     </form>
                   <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-footer">
+                  <button type="submit" [disabled]="!studyGuideDetails.valid">submit</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
               </div>

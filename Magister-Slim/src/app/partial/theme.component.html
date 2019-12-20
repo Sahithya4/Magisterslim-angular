@@ -1,9 +1,29 @@
-<app-studyguide></app-studyguide>
+<app-teacher></app-teacher>
 <div class="container">
-    <ul *ngFor= "let lists of viewLists">
-        <li>
-            <button type="button" (click)="onStudyGuide(lists)">{{lists.themeName}}</button>
-            <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myTheme" (click)="onStudyGuide(lists)">Add Units</button>
-        </li>
+  <ul>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>StudyGuide : {{studyGuide.studyGuideName}}</th>
+          <th>Offering : {{studyGuide.offeringReference.offeringName}}</th>
+          <th>OfferingLevel : {{studyGuide.offeringLevelReference.offeringLevelName}}</th>
+          <th>Course : {{studyGuide.courseReference.courseName}}</th>
+        </tr>
+      </thead>
+    </table>
+  </ul>
+    <ul class="sidenav">
+        <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th>Themes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor= "let lists of themes" (click)="onUnits(lists)">
+                <td>{{lists.themeName}}</td>
+                </tr>
+            </tbody>
+          </table>
+        <button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal">Create Theme</button>
     </ul>
-</div>

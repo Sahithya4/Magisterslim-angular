@@ -11,12 +11,14 @@ import { AddstudentComponent } from '../typescripts/addstudent.component';
 import { AssignmentComponent } from '../typescripts/assignment.component';
 import { ResourceComponent } from '../typescripts/resource.component';
 import { ThemeComponent } from '../typescripts/theme.component';
+import { UnitComponent } from '../typescripts/unit.component';
 
 
 const routes: Routes = [{path: '', component: LoginComponent} ,{path: 'teacher', component: TeacherComponent}, 
 {path: 'student', component: StudentComponent},{path: 'studyGuide', component: StudyguideComponent},
 {path: 'addstudent' , component: AddstudentComponent},{path : 'assignment', component : AssignmentComponent},
-{path : 'resource' , component : ResourceComponent}, {path : 'studyGuide/:id/theme' , component : ThemeComponent}];
+{path : 'resource' , component : ResourceComponent}, {path : 'studyGuide/:id/theme' , component : ThemeComponent},
+{path : 'studyGuide/:id/theme/:id/unit' , component : UnitComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

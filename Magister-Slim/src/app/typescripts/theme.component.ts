@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StudyguideComponent } from './studyguide.component';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-theme',
@@ -7,12 +9,30 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['../css/theme.component.css']
 })
 export class ThemeComponent implements OnInit {
- 
-  constructor(private route: ActivatedRoute) { 
-    this.route.params.subscribe( params => console.log(params));
+
+  studyGuide :any
+  themes :any
+  theme :any
+
+  constructor(private route: ActivatedRoute,private themeService : ThemeService,private router : Router) { 
   }
 
   ngOnInit() {
+    this.studyGuide=StudyguideComponent.studyGuide;
+    this.themes=this.studyGuide.themes;
+    this.themeService.findTheme(this.themes[0].themeId,this.studyGuide).subscribe(data=>{console.log(data);this.updatedata(data);
+    });
   }
 
+  onUnits(theme)
+  {
+    console.log(theme)
+    this.themeService.findTheme(theme.themeId,this.studyGuide).subscribe(data=>{console.log(data);this.updatedata(data);
+    });
+  }
+  updatedata(data)
+  {
+    this.theme=data
+    this.router.navigate(["studyGuide/"+this.studyGuide.studyGuideId+"/theme/"+this.theme.themeId+"/unit"])
+  }
 }

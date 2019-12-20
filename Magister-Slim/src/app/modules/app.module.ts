@@ -17,6 +17,7 @@ import { StudyguideComponent } from '../typescripts/studyguide.component';
 import { AssignmentComponent } from '../typescripts/assignment.component';
 import { ResourceComponent } from '../typescripts/resource.component';
 import { ThemeComponent } from '../typescripts/theme.component';
+import { UnitComponent } from '../typescripts/unit.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { ThemeComponent } from '../typescripts/theme.component';
     StudyguideComponent,
     AssignmentComponent,
     ResourceComponent,
-    ThemeComponent
+    ThemeComponent,
+    UnitComponent
   ],
   imports: [
     BrowserModule,

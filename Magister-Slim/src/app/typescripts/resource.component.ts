@@ -16,6 +16,8 @@ export class ResourceComponent implements OnInit {
   ngOnInit() {
     this.resourceService.viewResource().subscribe(data=>{console.log(data);this.updatedata(data);
     });
+    this.resourceService.viewResource().subscribe(data=>{console.log(data);this.updatedata(data);
+    });
   }
 
   resourceDetails = this.formBuilder.group({
@@ -27,7 +29,6 @@ export class ResourceComponent implements OnInit {
   createResource()
   {
     var resource=this.resourceDetails.value;
-    console.log(resource)
     this.resourceService.insertData(resource).subscribe(data => console.log(data)); 
     this.resourceService.viewResource().subscribe(data=>{console.log(data);this.updatedata(data);
     });

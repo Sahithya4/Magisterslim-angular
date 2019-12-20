@@ -4,6 +4,7 @@ import { StudyGuideService } from '../services/study-guide.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { CourseService } from './course.service';
 import { ThemeService } from '../services/theme.service';
+import { staticViewQueryIds } from '@angular/compiler';
 
 @Component({
   selector: 'app-studyguide',
@@ -12,8 +13,8 @@ import { ThemeService } from '../services/theme.service';
 })
 export class StudyguideComponent implements OnInit {
   viewLists: any;
-  studyGuide :any;
   courseDetails: any;
+  static studyGuide : any;
 
   constructor(private router :Router,private studyGuideService : StudyGuideService,private formBuilder: FormBuilder
     ,private courseService: CourseService, private themeService: ThemeService) { 
@@ -29,6 +30,8 @@ export class StudyguideComponent implements OnInit {
   studyGuideDetails = this.formBuilder.group({
     studyGuideId: [,Validators.required],
     studyGuideName: ['',Validators.required],
+    offering :[,Validators.required],
+    offeringLevel :[,Validators.required],
     courseReference: this.formBuilder.group({
       courseId: [],
       courseName: [],
@@ -36,12 +39,6 @@ export class StudyguideComponent implements OnInit {
     }),
     validOnwards: [,Validators.required],
     validUpto: [,Validators.required],
-    active: [true]
-  })
-  themeDetails = this.formBuilder.group({
-    themeId: [,Validators.required],
-    themeName: ['',Validators.required],
-    active: [true]
   })
   
   createStudyGuide()
@@ -53,18 +50,11 @@ export class StudyguideComponent implements OnInit {
     this.studyGuideService.viewStudyGuide().subscribe(data=>this.viewLists=data);
     this.studyGuideService.viewStudyGuide().subscribe(data=>this.viewLists=data);
   }
-  createTheme()
-  {
-    console.log(this.studyGuide.studyGuideId)
-    var theme=this.themeDetails.value;
-    console.log(theme)
-    this.themeService.insertData(theme,this.studyGuide.studyGuideId).subscribe(data => console.log(data));
-  }
   onStudyGuide(lists)
   {
-    this.studyGuide=lists
     console.log(lists)
-    this.router.navigate(["studyGuide/"+this.studyGuide.studyGuideId+"/theme"]);
+    StudyguideComponent.studyGuide=lists;
+    this.router.navigateByUrl("studyGuide/"+lists.studyGuideId+"/theme");
   }
 
 }
