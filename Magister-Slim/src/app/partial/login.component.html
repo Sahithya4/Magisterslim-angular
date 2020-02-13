@@ -1,15 +1,26 @@
 <router-outlet></router-outlet>
-<div id="container">
-    <h1>Magister-Slim</h1>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.4/css/bootstrap.min.css">
+
+<div class="bg">
+    <div class="container">
+    <div class="login-form col-md-4 offset-md-4">
+    <h1 class="title">Magister-Slim</h1>
         <form [formGroup]="loginForm" (ngSubmit)=saveLogin()>
-        <label>
-            Username : <input type="text" id="username" formControlName="username">
-        </label>
-        <label>
-            Password : <input type="password" id="password" formControlName="password">
-        </label>
-        <div id="lower">
-            <input type="submit" value="Login">
+        <div class="form-group">
+            <div>
+                <p style="color: red;">{{login}}</p>
+            </div>
+            <label>Username :</label>
+            <input type="text" id="username" formControlName="username" class="form-control">
         </div>
+        <div class="form-group">
+            <label>Password :</label>
+            <input type="password" id="password" formControlName="password" class="form-control">
+        </div>
+        <button class="btn btn-secondary btn-block" id="login">Login</button>
     </form>
+    </div>
+    </div>
 </div>
+
+

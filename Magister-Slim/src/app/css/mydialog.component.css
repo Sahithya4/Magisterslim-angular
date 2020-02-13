@@ -1,0 +1,19 @@
+h3{
+    color: rgb(105, 191, 224);
+    text-align: center;
+  }
+  .btn-light{
+    text-align: center;
+    /* color: rgb(255, 255, 255) ; */
+    background-color: rgb(105, 191, 224) ;
+  }
+mat-dialog-content{
+    text-align: center;
+}
+mat-dialog-actions{
+    text-align: center;
+  display: inline-block;
+  position: absolute;
+  top: 58%;
+  left: 36%;
+}

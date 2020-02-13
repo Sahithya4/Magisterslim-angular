@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudyGuideService } from '../services/study-guide.service';
 import { Router } from '@angular/router';
+import {CookieService} from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-teacher',
@@ -9,9 +10,13 @@ import { Router } from '@angular/router';
 })
 export class TeacherComponent implements OnInit {
 
-  constructor(private router :Router) { }
+  user : any
+  constructor(private router :Router, private cookieService : CookieService) { }
 
   ngOnInit() {
+    this.user=this.cookieService.get('username');
+    if(this.cookieService.get('token')=="")
+    this.router.navigate([""]);
   }
 
   viewStudyGuides()
@@ -24,10 +29,22 @@ export class TeacherComponent implements OnInit {
   }
   addStudent()
   {
-    this.router.navigate(["addstudent"]);
+    this.router.navigate(["teacher/student"]);
   }
   viewResources()
   {
     this.router.navigate(["resource"]);
+  }
+  createGroup()
+  {
+    this.router.navigate(['group']);
+  }
+  offering(){
+    this.router.navigate(['offering']);
+  }
+  onLogout()
+  {
+    this.cookieService.deleteAll();
+    console.log(this.cookieService.get("token")+"cleared");
   }
 }

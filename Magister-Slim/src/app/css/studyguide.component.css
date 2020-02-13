@@ -1,0 +1,62 @@
+tr:hover {
+    background-color: rgb(218, 218, 218);
+    cursor: pointer;
+  }
+  @media (min-width: 1400px) {
+    .container{
+        max-width: 1400px;
+    }
+}
+/* tbody {
+  background-color: rgb(255, 249, 249);
+} */
+h3{
+  color: rgb(105, 191, 224);
+}
+label{
+  font: bold;
+}
+.btn-light{
+  /* color: rgb(255, 255, 255) ; */
+  background-color: rgb(106, 193, 228) ;
+}
+.toast-top-center { 
+  top: 12px;   
+  margin: 0 auto;  
+  left: 50%;   
+  margin-left: -150px;
+}
+ul.breadcrumb {
+  padding: 10px 16px;
+  list-style: none;
+  background-color: rgb(39, 170, 221);
+  color: white;
+}
+ul.breadcrumb li {
+  display: inline;
+  font-size: 18px;
+}
+ul.breadcrumb li+li:before {
+  padding: 8px;
+  color: White;
+  content: "|\00a0";
+}
+ul.breadcrumb li a {
+  color: White;
+  text-decoration: none;
+}
+ul.breadcrumb li a:hover {
+  color: #55b1ee;
+  text-decoration: underline;
+}
+select {
+  color: rgb(17, 15, 15);
+}
+
+option {
+  color: black;
+}
+
+option[default] {
+   display: none;
+}

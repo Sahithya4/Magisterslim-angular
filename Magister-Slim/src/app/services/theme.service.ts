@@ -15,8 +15,9 @@ export class ThemeService {
   }
 
   findTheme(themeId,studyGuide){
-    console.log(themeId)
-    console.log(studyGuide)
     return this.http.get<any>("http://localhost:8088/studyGuide/"+studyGuide.studyGuideId+"/theme/"+themeId);
+  }
+  deleteTheme(studyGuide,theme){
+    return this.http.delete<any>("http://localhost:8088/studyGuide/"+studyGuide.studyGuideId+"/theme/"+theme.themeId);
   }
 }

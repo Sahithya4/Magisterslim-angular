@@ -3,10 +3,6 @@
     <div class="container">
         <h3>Student Details:</h3>
         <div>
-            StudentId:
-            <input type="number" formControlName="id">
-        </div>
-        <div>
             StudentName:
             <input type="text" formControlName="name">
         </div>
@@ -18,10 +14,6 @@
             Phone no:
             <input type="number" formControlName="phoneno">
         </div>
-        <div>
-            active:
-            <input type="checkbox" formControlName="active">
-        </div>
-        <button type="submit" [disabled]="!studentDetails.valid">submit</button>
+            <button type="submit" >submit</button>
         </div>
 </form>

@@ -1,0 +1,45 @@
+<h3>Delete</h3>
+<div class="container">
+  <!-- <mat-dialog> -->
+    <!-- <mat-dialog-content>Are You Sure to delete?</mat-dialog-content>
+      <mat-dialog-actions>
+        <button type="button" class="btn btn-light" mat-button mat-dialog-close>No</button>
+        <button type="button" class="btn btn-light" mat-button [mat-dialog-close]=true>Yes</button>
+      </mat-dialog-actions> -->
+  <!-- </mat-dialog> -->
+</div>
+<!-- <div class="modal" id="deleteUnit">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="container">
+          <h4 >Are you sure to delete?</h4><br>
+          <div class="modal-footer">
+          <button (click)="deleteUnits()"  data-dismiss="modal"  type="button" class="btn btn-light">Delete</button>
+          <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+        </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>  -->
+
+<!-- <mat-dialog>    
+  <title mat-dialog-title>Delete</title>
+    <mat-dialog-content>Are You Sure to delete?</mat-dialog-content>
+    <mat-dialog-actions> 
+        <button type="button" mat-raised-button color="primary"
+            (click)="dialogRef.close(true)" mat-dialog-close>Yes</button>
+        <button type="button" mat-button 
+            (click)="dialogRef.close()" mat-dialog-close>No</button>
+     </mat-dialog-actions>
+</mat-dialog> -->
+<mat-dialog-content>
+<p> Are You Sure to delete? </p>
+<button type="button" class="btn btn-light" mat-button mat-dialog-close>No</button>
+<button type="button" class="btn btn-light" mat-button [mat-dialog-close]=true>Yes</button>
+</mat-dialog-content>
+<!-- <mat-dialog-actions>
+  <button type="button" class="btn btn-light" mat-button mat-dialog-close>No</button>
+  <button type="button" class="btn btn-light" mat-button [mat-dialog-close]=true>Yes</button>
+</mat-dialog-actions> -->

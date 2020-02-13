@@ -1,0 +1,72 @@
+<app-teacher></app-teacher>
+<div class="container">
+    <ul>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                        Offering Name
+                    </th>
+                    <th>
+                        <button type="button" class="btn btn-light" data-toggle="modal" (click)="reset()" data-target="#myModal">
+                            Create Offering
+                        </button>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let offering of offeringList">
+
+                    <td  (click)="onOffering(offering)">
+                        {{offering.offeringName}}
+                    </td>
+                    <td (click)="onClick(offering)" ><button class="btn btn-info ">
+                        <span data-toggle="modal" data-target="#deleteModal" class="glyphicon glyphicon-trash" > Delete</span>  
+                      </button>
+                </tr>
+                <div class="modal" id="deleteModal">
+                    <div class="modal-dialog modal-dialog-centered">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <div class="container">
+                          <h4 >Are you sure to delete?</h4><br>
+                          <div class="modal-footer">
+                          <button (click)="deleteOffering()"  data-dismiss="modal"  type="button" class="btn btn-light">Delete</button>
+                          <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div> 
+            </tbody>
+        </table>
+    </ul>
+    <div class="modal" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <form [formGroup]="offeringDetails">
+                        <div class="container">
+                            <h3> Create Offering:</h3>
+                            <div>
+                                <label class="col-md-6">
+                                    <b>
+                                        *Offering Name
+                                    </b>
+                                </label>
+                                <input class="col-md-6" type="text" formControlName="offeringName">
+                            </div>
+                        </div>
+                    </form>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-light" [disabled]="!offeringDetails.valid"
+                        (click)="createOffering()" data-dismiss="modal">submit</button>
+                    <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

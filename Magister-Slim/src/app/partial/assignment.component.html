@@ -1,1 +1,60 @@
 <app-teacher></app-teacher>
+<ul class="breadcrumb">
+  <li><a href="studyGuide">StudyGuide</a></li>
+  <li><a href="studyGuide/{{studyGuide.studyGuideId}}/theme/{{studyGuide.themes[0].themeId}}/unit">Theme-Unit</a></li>
+  <li>Assignments</li>
+</ul>
+<div class="container">
+    <ul>
+      <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th>Assignment Name</th>
+            <th>Start Date</th>
+            <th>End date</th>
+            <th><button id="createAssignment" type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal">Create Assignment</button></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor= "let lists of viewLists" >
+            <td id={{lists.assignmentName}} (click)="onAssignment(lists)">{{lists.assignmentName}}</td>
+            <td (click)="onAssignment(lists)">{{lists.validOnwards | date}}</td>
+            <td (click)="onAssignment(lists)">{{lists.validUpto | date}}</td>
+            <td><button id="deleteSG" class="btn btn-info " (click)="onClick(lists)">
+                <span data-toggle="modal" data-target="#deleteModal" class="glyphicon glyphicon-trash" > Delete</span>  
+                </button>
+            </td>
+          </tr>
+        </tbody>  
+      </table>
+    </ul>
+    <div class="modal" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <form [formGroup]="assignmentDetails" >
+                  <div class="container">
+                    <h3>Create Assignment:</h3>
+                      <div >
+                        <label class="col-md-6"><b>*Title</b></label>
+                        <input type="text" class="col-md-6" formControlName="assignmentName">
+                      </div>
+                      <div>
+                        <label class="col-md-6"><b>*Start Date</b></label>
+                        <input class="col-md-6" type="date" min="{{ today | date : 'y-MM-dd' }}" formControlName="validOnwards"  (ngModelChange)="setStartDate($event)">
+                      </div>
+                      <div *ngIf="selectedStartDate"> 
+                        <label class="col-md-6"><b>*End Date</b></label>
+                        <input class="col-md-6" type="date" min="{{ selectedStartDate }}" formControlName="validUpto">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-light" [disabled]="!assignmentDetails.valid"  data-dismiss="modal" (click)="createAssignment()" >Submit</button>
+                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+                      </div>
+                    </div>
+                  </form>
+              </div>
+          </div>
+        </div>
+      </div>
+</div>

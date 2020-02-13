@@ -1,40 +1,44 @@
-<head>
-  <title>Magister-Slim</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
-
 <div class="jumbotron text-center" style="margin-bottom:0">
   <h1>Magister-Slim</h1>
 </div>
-
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" href="#"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark navbar-toggleable-md">
+  <button class="navbar-toggler navbar-toggleable-xs" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav nav-tabs justify-content-center">
+    <ul class="navbar-nav nav-tabs">
       <li class="nav-item">
-        <a class="nav-link" (click)='viewStudyGuides()'>StudyGuides</a>
+        <a class="toggler"><span class="fi fi-icon_taskbar" style="color: white; font-size:37px; font-weight: bolder ;">&#8801; </span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)='viewAssignments()'>Assignments</a>
+        <a class="nav-link" [routerLink]="['/studyGuide']" routerLinkActive="active" (click)='viewStudyGuides()'>StudyGuides</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" (click)='viewResources()'>Resources</a>
+        <a class="nav-link" [routerLink]="['/assignment']" routerLinkActive="active" (click)='viewAssignments()'>Assignments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/resource']" routerLinkActive="active" (click)='viewResources()'>Resources</a>
       </li>   
       <li class="nav-item">
-        <a class="nav-link" (click)='createClass()'>Create class</a>
-      </li>   
+        <a class="nav-link" [routerLink]="['/group']" routerLinkActive="active" (click)='createGroup()'>Create Group</a>
+      </li>     
       <li class="nav-item">
-        <a class="nav-link" (click)='addStudent()'>Add student</a>
+        <a class="nav-link" [routerLink]="['/teacher/student']" routerLinkActive="active" (click)='addStudent()'>Add student</a>
       </li>  
       <li class="nav-item">
-        <a class="nav-link" routerLink="">Logout</a>
+        <a class="nav-link" [routerLink]="['/offering']" routerLinkActive="active" (click)='offering()'>Offering</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item nav-tabs">
+        <a class="nav-link" routerLink="" (click)='onLogout()'>Logout</a>
       </li> 
+      <li class="nav-item active">
+        <h5 class="nav-link">Teacher {{user}}</h5>
+      </li>
+      <a class="navbar-brand">
+        <img src="bg7.jpg" width=40 height=40>
+      </a>
     </ul>
   </div>  
 </nav>
-</body>

@@ -1,0 +1,17 @@
+ul{
+    padding-left: 20%;
+}
+tbody {
+    background-color: rgb(255, 249, 249);
+  }
+  tr:hover {
+    background-color: rgb(218, 218, 218);
+    cursor: pointer;
+  }
+  h3{
+    color: rgb(105, 191, 224);
+  }
+  .btn-light{
+    /* color: rgb(255, 255, 255) ; */
+    background-color: rgb(105, 191, 224) ;
+  }

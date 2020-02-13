@@ -10,7 +10,10 @@ export class AssignmentService {
 
   constructor(private router: Router, private http: HttpClient) { }
 
-  public viewStudyGuide(): Observable<any> {
-    return  this.http.get<any>("http://localhost:8088/assignment")
+  public viewAssignment(studyGuideId,themeId,unitId): Observable<any> {
+    return this.http.get<any>("http://localhost:8088/studyGuide/"+studyGuideId+"/theme/"+themeId+"/unit/"+unitId+"/assignment")
+  }
+  createAssignment(studyGuideId,themeId,unitId,assignment): Observable<any>{
+    return this.http.post<any>("http://localhost:8088/studyGuide/"+studyGuideId+"/theme/"+themeId+"/unit/"+unitId+"/assignment",assignment);
   }
 }

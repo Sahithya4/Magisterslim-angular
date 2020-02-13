@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { StudentService } from '../services/student.service';
 
 @Component({
   selector: 'app-addstudent',
@@ -9,13 +10,12 @@ import { Router } from '@angular/router';
 })
 export class AddstudentComponent implements OnInit {
 
-  constructor(private router :Router,private formBuilder: FormBuilder) { }
+  constructor(private router :Router,private formBuilder: FormBuilder,private studentService :StudentService ) { }
 
   ngOnInit() {
   }
 
   studentDetails = this.formBuilder.group({
-    id: [,Validators.required],
     name: ['',Validators.required],
     gender : ['',Validators.required],
     phoneno: [,Validators.required],
@@ -26,6 +26,10 @@ export class AddstudentComponent implements OnInit {
   {
     var student=this.studentDetails.value;
     console.log(student)
- //   this.studyGuideService.insertData(student).subscribe(data => console.log(data)); 
+    this.studentService.insertData(student).subscribe(data => console.log(data)); 
+    this.reset();
+  }
+  reset() {
+    this.studentDetails.reset();
   }
 }

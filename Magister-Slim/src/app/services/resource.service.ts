@@ -11,9 +11,15 @@ export class ResourceService {
   constructor(private router: Router, private http: HttpClient) { }
 
   public viewResource(): Observable<any> {
-    return  this.http.get<any>("http://localhost:8088/resource")
+    return  this.http.get<any>("http://localhost:8088/resources")
   }
   insertData(resource:any):Observable<any> {
     return this.http.post<any>("http://localhost:8088/resource",resource);
+  }
+  deleteResource(resource:any):Observable<any>{
+    return this.http.delete<any>("http://localhost:8088/resource/"+resource.resourceId);
+  }
+  updateDetails(StudyGuide,Theme,Unit,resource):Observable<any>{
+    return this.http.post<any>("http://localhost:8088/studyGuide/"+StudyGuide.studyGuideId+"/theme/"+Theme.themeId+"/unit/"+Unit.unitId,resource);
   }
 }

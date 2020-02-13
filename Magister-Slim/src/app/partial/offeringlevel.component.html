@@ -1,0 +1,74 @@
+<app-teacher></app-teacher>
+<div class="container">
+  <ul>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th>Offering : {{offering.offeringName}}</th>
+        </tr>
+      </thead>
+    </table>
+  </ul>
+
+<ul class="sidenav">
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>Offering Levels</th>
+        <th><button type="button" class="btn btn-light" data-toggle="modal" data-target="#myModal" (click)="reset()">ADD </button></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor= "let lists of offeringLevels">
+        <td (click)="onCourse(lists)" [routerLink]="['/offering',offering.offeringId,'offering-level',lists.offeringLevelId,'course']" routerLinkActive="active" >{{lists.offeringLevelName}}</td>
+        <td [routerLink]="['/offering',offering.offeringId,'offering-level',lists.offeringLevelId,'course']" routerLinkActive="active" ><button class="btn btn-info" (click)="onClick(lists)">
+          <span data-toggle="modal" data-target="#deleteModal" class="glyphicon glyphicon-trash" > Delete</span>  
+        </button>
+       </td>
+      </tr>
+    </tbody>
+  </table>
+</ul>
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <form [formGroup]="offeringLevelDetails">
+                  <div class="container">
+                      <h3> Create Offering Level:</h3>
+                      <div>
+                          <label class="col-md-6">
+                              <b>
+                                  *Offering Level Name
+                              </b>
+                          </label>
+                          <input class="col-md-6" type="text" formControlName="offeringLevelName">
+                      </div>
+                  </div>
+              </form>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-footer">
+              <button   data-dismiss="modal" type="submit" class="btn btn-light" [disabled]="!offeringLevelDetails.valid"
+                  (click)="createOfferingLevel()">submit</button>
+              <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="modal" id="deleteModal">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="container">
+        <h4 >Are you sure to delete?</h4><br>
+        <div class="modal-footer">
+        <button (click)="deleteOfferingLevel()"  data-dismiss="modal"  type="button" class="btn btn-light">Delete</button>
+        <button type="button" class="btn btn-light" data-dismiss="modal">Cancel</button>
+      </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div> 
+</div>
